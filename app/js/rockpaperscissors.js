@@ -4,8 +4,7 @@
 'use strict';
 
 function getInput() {
-    console.log("Please choose either 'rock', 'paper', or 'scissors'.")
-    return prompt();
+    return prompt("Please choose either 'rock', 'paper', or 'scissors'.");
 }
 function randomPlay() {
     var randomNumber = Math.random();
@@ -40,7 +39,40 @@ function getWinner(playerMove,computerMove) {
     // Write code that will set winner to either 'player', 'computer', or 'tie' based on the values of playerMove and computerMove.
     // Assume that the only values playerMove and computerMove can have are 'rock', 'paper', and 'scissors'.
     // The rules of the game are that 'rock' beats 'scissors', 'scissors' beats 'paper', and 'paper' beats 'rock'.
-    /* YOUR CODE HERE */
+    var playerMove = getPlayerMove();
+    console.log("Player: " + playerMove);
+    var computerMove = getComputerMove();
+    console.log("Computer: " + computerMove);
+    if (playerMove === computerMove) {
+    	winner = "tie";
+    }
+    else if(playerMove === "rock") {
+        switch(computerMove) {
+            case "paper":
+                winner = "computer";
+                break;
+            default:
+                winner = "player";
+        }
+    }
+    else if(playerMove === "paper") {
+        switch(computerMove) {
+            case "rock":
+                winner = "player";
+                break;
+            default:
+                winner = "computer";
+        }
+    }
+    else {
+        switch(computerMove) {
+            case "rock":
+                winner = "computer";
+                break;
+            default:
+                winner = "player";
+        }
+    }
     return winner;
 }
 
